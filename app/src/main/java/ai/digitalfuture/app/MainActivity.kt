@@ -30,16 +30,31 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
+    private var incomingUrl: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { DigitalFutureApp() }
+        incomingUrl = intent?.dataString
+        setContent { DigitalFutureApp(initialUrl = incomingUrl) }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        incomingUrl = intent.dataString
     }
 }
 
+private fun platformForUrl(url: String?): Platform? {
+    val host = runCatching { Uri.parse(url).host }.getOrNull()?.lowercase() ?: return null
+    return digitalFuturePlatforms.firstOrNull { Uri.parse(it.url).host == host }
+}
+
 @Composable
-private fun DigitalFutureApp() {
+private fun DigitalFutureApp(initialUrl: String?) {
     val context = LocalContext.current
     var qrPlatform by remember { mutableStateOf<Platform?>(null) }
+    val openedPlatform = remember(initialUrl) { platformForUrl(initialUrl) }
 
     MaterialTheme {
         Scaffold(
@@ -58,6 +73,13 @@ private fun DigitalFutureApp() {
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier.padding(top = 4.dp)
                         )
+                        openedPlatform?.let {
+                            Text(
+                                "Opened from ${it.name}",
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.padding(top = 8.dp)
+                            )
+                        }
                     }
                 }
 
