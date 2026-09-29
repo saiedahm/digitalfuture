@@ -1,0 +1,3 @@
+{
+  "note": "The production Digital Asset Links file must be hosted at /.well-known/assetlinks.json on each official platform domain before Android App Links can be verified. This repository intentionally does not publish a fake verification statement."
+}
