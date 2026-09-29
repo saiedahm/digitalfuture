@@ -9,6 +9,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,6 +26,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -67,6 +69,11 @@ private fun DigitalFutureApp(initialUrl: String?) {
             ) {
                 item {
                     Column(modifier = Modifier.padding(bottom = 4.dp)) {
+                        Image(
+                            painter = painterResource(R.drawable.digital_future_logo),
+                            contentDescription = "digital-future.ai logo",
+                            modifier = Modifier.size(150.dp)
+                        )
                         Text("digital-future.ai", style = MaterialTheme.typography.headlineMedium)
                         Text(
                             "SAKAN · NEXORA · HELP-ME",
@@ -86,7 +93,24 @@ private fun DigitalFutureApp(initialUrl: String?) {
                 items(digitalFuturePlatforms) { platform ->
                     Card(modifier = Modifier.fillMaxWidth()) {
                         Column(modifier = Modifier.padding(20.dp)) {
-                            Text(platform.name, style = MaterialTheme.typography.titleLarge)
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(14.dp)
+                            ) {
+                                Image(
+                                    painter = painterResource(platform.logoRes),
+                                    contentDescription = "${platform.name} logo",
+                                    modifier = Modifier.size(76.dp)
+                                )
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(platform.name, style = MaterialTheme.typography.titleLarge)
+                                    Text(
+                                        platform.url,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        modifier = Modifier.padding(top = 4.dp)
+                                    )
+                                }
+                            }
                             Button(
                                 onClick = {
                                     context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(platform.url)))
