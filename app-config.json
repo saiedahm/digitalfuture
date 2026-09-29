@@ -1,0 +1,22 @@
+{
+  "appName": "digital-future.ai",
+  "platform": "android",
+  "releaseTarget": "google-play",
+  "platforms": [
+    {
+      "id": "sakan",
+      "name": "SAKAN",
+      "url": "https://www.sakanapp.net"
+    },
+    {
+      "id": "nexora",
+      "name": "NEXORA",
+      "url": "https://www.nexoraonline.de"
+    },
+    {
+      "id": "help-me",
+      "name": "HELP-ME",
+      "url": "https://www.helpmey.net"
+    }
+  ]
+}
