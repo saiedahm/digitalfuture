@@ -24,14 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
-private data class Platform(val name: String, val url: String)
-
-private val platforms = listOf(
-    Platform("SAKAN", "https://www.sakanapp.net"),
-    Platform("NEXORA", "https://www.nexoraonline.de"),
-    Platform("HELP-ME", "https://www.helpmey.net")
-)
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,18 +47,30 @@ private fun DigitalFutureApp() {
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 item {
-                    Text(
-                        text = "Your digital future in one place",
-                        style = MaterialTheme.typography.headlineSmall,
-                        modifier = Modifier.padding(bottom = 4.dp)
-                    )
+                    Column(modifier = Modifier.padding(bottom = 4.dp)) {
+                        Text(
+                            text = "digital-future.ai",
+                            style = MaterialTheme.typography.headlineMedium
+                        )
+                        Text(
+                            text = "SAKAN · NEXORA · HELP-ME",
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
                 }
-                items(platforms) { platform ->
+
+                items(digitalFuturePlatforms) { platform ->
                     Card(modifier = Modifier.fillMaxWidth()) {
                         Column(modifier = Modifier.padding(20.dp)) {
                             Text(
                                 text = platform.name,
                                 style = MaterialTheme.typography.titleLarge
+                            )
+                            Text(
+                                text = platform.url,
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.padding(top = 6.dp)
                             )
                             Button(
                                 onClick = {
