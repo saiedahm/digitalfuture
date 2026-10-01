@@ -24,12 +24,21 @@ jobs:
         with:
           gradle-version: '8.13'
 
-      - name: Build debug APK
-        run: gradle :app:assembleDebug --stacktrace
+      - name: Build NEXORA debug APK
+        run: gradle :app:assembleNexoraDebug --stacktrace
 
-      - name: Upload debug APK
+      - name: Build SAKAN debug APK
+        run: gradle :app:assembleSakanDebug --stacktrace
+
+      - name: Build HELP-ME debug APK
+        run: gradle :app:assembleHelpmeDebug --stacktrace
+
+      - name: Upload debug APKs
         uses: actions/upload-artifact@v4
         with:
-          name: digitalfuture-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: digitalfuture-debug-apks
+          path: |
+            app/build/outputs/apk/nexora/debug/app-nexora-debug.apk
+            app/build/outputs/apk/sakan/debug/app-sakan-debug.apk
+            app/build/outputs/apk/helpme/debug/app-helpme-debug.apk
           if-no-files-found: error
