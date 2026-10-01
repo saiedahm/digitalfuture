@@ -1,4 +1,4 @@
-name: Android Release Bundle
+name: Android Release Bundles
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
       - 'v*'
 
 jobs:
-  release-bundle:
+  release-bundles:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,12 +26,32 @@ jobs:
         with:
           gradle-version: '8.13'
 
-      - name: Build release AAB
-        run: gradle :app:bundleRelease --stacktrace
+      - name: Build NEXORA AAB
+        run: gradle :app:bundleNexoraRelease --stacktrace
 
-      - name: Upload release AAB
+      - name: Build SAKAN AAB
+        run: gradle :app:bundleSakanRelease --stacktrace
+
+      - name: Build HELP-ME AAB
+        run: gradle :app:bundleHelpmeRelease --stacktrace
+
+      - name: Upload NEXORA AAB
         uses: actions/upload-artifact@v4
         with:
-          name: digitalfuture-release-aab-unsigned
-          path: app/build/outputs/bundle/release/app-release.aab
+          name: digitalfuture-nexora-release-aab-unsigned
+          path: app/build/outputs/bundle/nexoraRelease/app-nexora-release.aab
+          if-no-files-found: error
+
+      - name: Upload SAKAN AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: digitalfuture-sakan-release-aab-unsigned
+          path: app/build/outputs/bundle/sakanRelease/app-sakan-release.aab
+          if-no-files-found: error
+
+      - name: Upload HELP-ME AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: digitalfuture-helpme-release-aab-unsigned
+          path: app/build/outputs/bundle/helpmeRelease/app-helpme-release.aab
           if-no-files-found: error
