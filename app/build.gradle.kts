@@ -16,6 +16,29 @@ android {
         versionName = "1.0.0"
     }
 
+    flavorDimensions += "platform"
+
+    productFlavors {
+        create("nexora") {
+            dimension = "platform"
+            applicationId = "ai.digitalfuture.nexora"
+            manifestPlaceholders["appName"] = "digitalfuture.ai — NEXORA-Digital"
+            manifestPlaceholders["appIcon"] = "@drawable/nexora_logo"
+        }
+        create("sakan") {
+            dimension = "platform"
+            applicationId = "ai.digitalfuture.sakan"
+            manifestPlaceholders["appName"] = "digitalfuture.ai — SAKAN"
+            manifestPlaceholders["appIcon"] = "@drawable/sakan_logo"
+        }
+        create("helpme") {
+            dimension = "platform"
+            applicationId = "ai.digitalfuture.helpme"
+            manifestPlaceholders["appName"] = "digitalfuture.ai — HELP-ME"
+            manifestPlaceholders["appIcon"] = "@drawable/help_me_logo"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -23,6 +46,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
