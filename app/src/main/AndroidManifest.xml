@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:theme="@style/Theme.DigitalFuture"
-        android:label="digital-future.ai"
+        android:label="${appName}"
+        android:icon="${appIcon}"
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity
