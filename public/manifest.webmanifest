@@ -1,0 +1,13 @@
+{
+  "id": "/",
+  "name": "Digital Future",
+  "short_name": "Digital Future",
+  "description": "One refined destination for four digital worlds.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061426",
+  "theme_color": "#061426",
+  "icons": []
+}
