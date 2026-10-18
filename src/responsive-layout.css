@@ -1,199 +1,176 @@
-/* DIGITAL FUTURE responsive layout additions.
-   Mobile-first rules remain in styles.css/mobile-compact.css.
-   No Google Play export dimensions are used as CSS container heights. */
+/* One-screen, mobile-first DIGITAL FUTURE home layout. */
+.compact-home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  padding: max(8px, env(safe-area-inset-top)) 12px calc(70px + env(safe-area-inset-bottom));
+  gap: 8px;
+}
+
+.compact-home .topbar {
+  flex: 0 0 66px;
+  width: 100%;
+  height: 66px;
+  min-height: 66px;
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
+  gap: 6px;
+}
+
+.compact-home .icon-button {
+  width: 34px;
+  height: 34px;
+}
+
+.compact-home .brand-lockup {
+  gap: 1px;
+  font-size: clamp(17px, 5vw, 22px);
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+
+.compact-home .brand-crown {
+  width: 22px;
+  height: 22px;
+}
+
+.compact-home .brand-lockup small {
+  margin-top: 2px;
+  font-size: clamp(6px, 1.8vw, 8px);
+  letter-spacing: .15em;
+}
+
+.compact-platforms {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.compact-home .platform-grid {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(7px, 1.8vh, 13px);
+}
+
+.compact-home .platform-card {
+  min-height: 0;
+  height: 100%;
+  padding: clamp(7px, 1.5vh, 12px) clamp(6px, 2vw, 12px);
+  border-radius: 13px;
+  overflow: hidden;
+  justify-content: center;
+  gap: 2px;
+}
+
+.compact-home .logo-frame {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  max-height: 15vh;
+  width: 100%;
+  margin: 0 0 4px;
+  border-radius: 8px;
+}
+
+.compact-home .logo-frame img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.compact-home .logo-fallback {
+  font-size: 12px;
+  padding: 4px;
+}
+
+.compact-home .platform-title {
+  font-size: clamp(11px, 3.4vw, 16px);
+  line-height: 1.1;
+  letter-spacing: .035em;
+  overflow-wrap: anywhere;
+}
+
+.compact-home .platform-subtitle {
+  margin-top: 3px;
+  font-size: clamp(6px, 1.7vw, 8px);
+  letter-spacing: .09em;
+  line-height: 1.15;
+}
+
+.compact-home .card-bottom {
+  flex: 0 0 auto;
+  margin-top: 5px;
+  padding-top: 5px;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.compact-home .round-arrow {
+  width: 22px;
+  height: 22px;
+}
+
+.compact-home .bottom-nav {
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 7px 12px calc(7px + env(safe-area-inset-bottom));
+}
+
+.compact-home .nav-item {
+  gap: 3px;
+  padding: 4px 2px;
+  font-size: 8px;
+}
+
+.compact-home .nav-item.active:after {
+  bottom: 3px;
+}
+
+@media (max-height: 680px) {
+  .compact-home { gap: 5px; padding-left: 9px; padding-right: 9px; padding-bottom: calc(61px + env(safe-area-inset-bottom)); }
+  .compact-home .topbar { flex-basis: 56px; height: 56px; min-height: 56px; }
+  .compact-home .brand-crown { width: 18px; height: 18px; }
+  .compact-home .platform-grid { gap: 6px; }
+  .compact-home .platform-card { padding: 5px 6px; }
+  .compact-home .logo-frame { max-height: 12vh; margin-bottom: 2px; }
+  .compact-home .platform-title { font-size: clamp(10px, 3vw, 13px); }
+  .compact-home .platform-subtitle { font-size: 6px; }
+  .compact-home .card-bottom { margin-top: 3px; padding-top: 3px; }
+  .compact-home .round-arrow { width: 19px; height: 19px; }
+}
+
+@media (min-width: 600px) {
+  .compact-home { padding: 14px 24px calc(78px + env(safe-area-inset-bottom)); gap: 12px; }
+  .compact-home .topbar { flex-basis: 76px; height: 76px; min-height: 76px; }
+  .compact-home .platform-grid { gap: 14px; }
+  .compact-home .platform-card { padding: 12px 16px; }
+  .compact-home .logo-frame { max-height: 19vh; }
+  .compact-home .platform-title { font-size: clamp(15px, 2.2vw, 22px); }
+  .compact-home .platform-subtitle { font-size: 9px; }
+  .compact-home .card-bottom { font-size: 11px; }
+}
 
 @media (min-width: 1024px) {
-  .app-shell {
-    padding: 0 clamp(28px, 5vw, 88px) 48px;
-  }
-
-  .topbar {
-    max-width: 1240px;
-    height: 112px;
-    grid-template-columns: 48px minmax(0, 1fr) 48px;
-  }
-
-  .brand-lockup {
-    font-size: 29px;
-    letter-spacing: .2em;
-  }
-
-  .brand-lockup small {
-    font-size: 9px;
-  }
-
-  .hero {
-    max-width: 1120px;
-    min-height: clamp(390px, 38vw, 520px);
-    padding: 58px 24px 44px;
-  }
-
-  .hero-orbit {
-    top: 24px;
-    width: min(480px, 42vw);
-    height: min(390px, 34vw);
-    opacity: .2;
-  }
-
-  .hero-orbit > svg {
-    width: clamp(210px, 19vw, 290px);
-    height: auto;
-  }
-
-  .hero-copy {
-    padding-top: 0;
-  }
-
-  .hero .eyebrow,
-  .signature .eyebrow {
-    font-size: 11px;
-  }
-
-  .hero h1 {
-    font-size: clamp(64px, 6vw, 88px);
-    margin: 22px 0;
-  }
-
-  .hero p {
-    max-width: 520px;
-    font-size: 15px;
-    margin-top: 20px;
-  }
-
-  .hero-rule {
-    left: 25%;
-    right: 25%;
-    bottom: 24px;
-  }
-
-  .platform-section {
-    max-width: 1240px;
-    margin-top: 30px;
-  }
-
-  .section-heading {
-    margin-bottom: 24px;
-  }
-
-  .section-heading h2 {
-    font-size: 44px;
-  }
-
-  .count {
-    font-size: 11px;
-  }
-
-  .platform-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(16px, 2vw, 28px);
-  }
-
-  .platform-card {
-    padding: 20px 18px 17px;
-    border-radius: 18px;
-    min-height: 320px;
-  }
-
-  .logo-frame {
-    height: clamp(145px, 15vw, 205px);
-    margin: 10px 0 15px;
-  }
-
-  .platform-title {
-    font-size: clamp(17px, 1.5vw, 22px);
-  }
-
-  .platform-subtitle {
-    font-size: 9px;
-  }
-
-  .card-bottom {
-    margin-top: auto;
-    padding-top: 15px;
-    font-size: 11px;
-  }
-
-  .signature {
-    max-width: 980px;
-    margin: 76px auto 42px;
-    padding: 42px 32px;
-  }
-
-  .signature-mark {
-    width: 58px;
-    height: 58px;
-  }
-
-  .signature h2 {
-    font-size: clamp(46px, 4.5vw, 64px);
-  }
-
-  .signature p {
-    max-width: 540px;
-    font-size: 13px;
-  }
-
-  .footer {
-    gap: 9px;
-  }
-
-  .bottom-nav {
-    position: static;
-    max-width: 680px;
-    margin: 34px auto 0;
-    padding: 12px 18px;
-    border: 1px solid #d9b05d55;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px #0004;
-  }
-
-  .nav-item {
-    font-size: 11px;
-    padding: 8px 4px;
-  }
-
-  .nav-item.active:after {
-    bottom: auto;
-    margin-top: 54px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .platform-section,
-  .topbar {
-    max-width: 1320px;
-  }
-
-  .hero {
-    max-width: 1200px;
-  }
-
-  .platform-card {
-    min-height: 350px;
-  }
-}
-
-/* Keep compact phones comfortable without forcing screenshot-export dimensions. */
-@media (min-width: 320px) and (max-width: 480px) {
-  .app-shell {
-    width: 100%;
-    min-width: 320px;
-  }
-
-  .platform-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .platform-card,
-  .logo-frame,
-  .platform-title,
-  .card-bottom {
-    min-width: 0;
-  }
-
-  .platform-title,
-  .platform-subtitle,
-  .card-bottom > span:first-child {
-    overflow-wrap: anywhere;
-  }
+  .compact-home { padding: 20px 5vw 86px; gap: 16px; }
+  .compact-home .topbar { max-width: 1240px; flex-basis: 84px; height: 84px; min-height: 84px; }
+  .compact-home .brand-lockup { font-size: 29px; }
+  .compact-home .brand-lockup small { font-size: 9px; }
+  .compact-home .platform-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); gap: clamp(14px, 2vw, 26px); }
+  .compact-home .platform-card { padding: 18px 14px; }
+  .compact-home .logo-frame { max-height: 32vh; }
+  .compact-home .platform-title { font-size: clamp(17px, 1.5vw, 22px); }
+  .compact-home .platform-subtitle { font-size: 9px; }
+  .compact-home .card-bottom { font-size: 11px; }
+  .compact-home .bottom-nav { max-width: 680px; left: 50%; right: auto; width: min(680px, 90vw); transform: translateX(-50%); border: 1px solid #d9b05d55; border-radius: 18px 18px 0 0; }
 }
