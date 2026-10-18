@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./styles.css";
 import "./mobile-compact.css";
+import "./responsive-layout.css";
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
