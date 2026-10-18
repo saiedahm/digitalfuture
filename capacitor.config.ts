@@ -4,7 +4,6 @@ const config: CapacitorConfig = {
   appId: "ai.digitalfuture.app",
   appName: "Digital Future",
   webDir: "dist",
-  bundledWebRuntime: false,
   android: {
     backgroundColor: "#061426"
   }
