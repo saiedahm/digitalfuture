@@ -1,0 +1,51 @@
+/* Compact phone layout: preserve the navy-and-gold visual identity while reducing excess vertical space. */
+@media (max-width: 480px) {
+  .app-shell {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+  .topbar { height: 78px; }
+  .brand-lockup { font-size: clamp(17px, 5vw, 21px); letter-spacing: .14em; }
+  .brand-lockup small { font-size: 7px; letter-spacing: .17em; }
+  .hero {
+    min-height: 286px;
+    padding: 22px 5px 19px;
+  }
+  .hero-orbit {
+    top: 20px;
+    width: min(270px, 78vw);
+    height: 205px;
+  }
+  .hero-orbit > svg { width: 158px; height: 158px; }
+  .hero-copy { padding-top: 8px; }
+  .hero h1 { font-size: clamp(36px, 9.4vw, 46px); margin: 12px 0; }
+  .hero p { max-width: 255px; margin-top: 12px; font-size: 11px; }
+  .hero-rule { bottom: 9px; }
+  .platform-section { margin-top: 13px; }
+  .section-heading { margin-bottom: 13px; }
+  .section-heading h2 { font-size: 29px; }
+  .platform-grid { gap: 10px; }
+  .platform-card { padding: 11px 9px 10px; border-radius: 13px; }
+  .logo-frame { height: clamp(78px, 25vw, 100px); margin: 4px 0 8px; }
+  .platform-title { font-size: clamp(12px, 3.7vw, 15px); }
+  .platform-subtitle { font-size: 7px; letter-spacing: .12em; }
+  .card-bottom { margin-top: 10px; padding-top: 8px; font-size: 8px; }
+  .round-arrow { width: 24px; height: 24px; }
+  .signature { margin-top: 36px; padding: 22px 14px 25px; }
+  .signature h2 { font-size: 34px; }
+  .bottom-nav { padding-top: 7px; padding-bottom: calc(7px + env(safe-area-inset-bottom)); }
+  .nav-item { gap: 4px; padding: 5px 2px; }
+}
+@media (max-width: 360px) {
+  .app-shell { padding-left: 12px; padding-right: 12px; }
+  .topbar { grid-template-columns: 36px 1fr 36px; }
+  .icon-button { width: 34px; height: 34px; }
+  .hero { min-height: 265px; }
+  .hero h1 { font-size: 35px; }
+  .platform-grid { gap: 8px; }
+  .platform-card { padding: 9px 7px; }
+  .logo-frame { height: 76px; }
+  .platform-title { font-size: 12px; }
+  .card-bottom { font-size: 7px; }
+}
